@@ -1,0 +1,22 @@
+local plrGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local screenGui = Instance.new("ScreenGui", plrGui)
+
+local txtButton = Instance.new("TextButton")
+txtButton.BackgroundTransparency = 1
+txtButton.Size = UDim2.new(0, 0, 0, 0)
+txtButton.Modal = true
+txtButton.Parent = screenGui
+
+screenGui.ResetOnSpawn = false
+warn("active")
+
+local userInputService = game:GetService("UserInputService")
+local guiEnabled = true
+
+userInputService.InputBegan:Connect(function(input, gameProcessed)
+    if not gameProcessed and input.KeyCode == Enum.KeyCode.Z then -- you can change
+        guiEnabled = not guiEnabled
+        screenGui.Enabled = guiEnabled
+    end
+end)
